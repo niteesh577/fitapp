@@ -3,6 +3,6 @@ streamlit_lottie
 requests
 markdownlit
 pillow
-cv2
-openai
-plotly 
+opencv-python==4.5.3.56
+openai==0.28.0  # Adjust the version if needed
+plotly
