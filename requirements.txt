@@ -3,3 +3,4 @@ streamlit_lottie
 requests
 markdownlit
 pillow
+opencv
