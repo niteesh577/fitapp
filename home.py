@@ -1246,7 +1246,7 @@ elif selected_page == "FIT-BOT":
         text.markdown(str("\n".join(messages_str)), unsafe_allow_html=True)
 
 
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     BASE_PROMPT = [{"role": "system", 'content': """
     You are Donnie, an automated Gym assistant to provide workout routines for the users and give suggestions. \
@@ -1362,7 +1362,7 @@ elif selected_page == "FitGenie":
     import streamlit as st
 
     # Set your OpenAI GPT-3 API key
-    openai.api_key = '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'
+    openai.api_key = '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'
 
 
     # Function to generate workout and diet plans using GPT-3
