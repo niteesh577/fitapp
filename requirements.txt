@@ -3,4 +3,6 @@ streamlit_lottie
 requests
 markdownlit
 pillow
-opencv
+cv2
+openai
+plotly 
