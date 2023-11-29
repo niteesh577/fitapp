@@ -24,12 +24,12 @@ st.set_page_config(page_title="Fitness Trainer", page_icon=":tada:", layout="wid
 
 # Sidebar navigation with hyperlinks
 page_links = {
-    "main": "main",
+    "Home": "Home",
     "Tutorials": "Tutorials",
     "Train": "Train",
-    "Chatbot": "Chatbot",
+    "FIT-BOT": "FIT-BOT",
     "Nutrition": "Nutrition",
-    "diet": "diet"
+    "FitGenie": "FitGenie"
 }
 
 # Apply custom CSS styles
@@ -52,16 +52,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-selected_page = st.sidebar.radio("Select a page", list(page_links.keys()))
+selected_page = st.sidebar.radio("Explore FitIQ", list(page_links.keys()))
 
-if selected_page == "main":
-    st.title("Home page")
+if selected_page == "Home":
+    st.title("FitIQ: AI Fitness Trainer")
 
     # Main content
     with st.container():
-        st.subheader("Hello, welcome to our website :wave:")
-        st.title("AI Fitness Trainer")
-        st.write("Step into a fitter future: Welcome to your fitness revolution!")
+
+
+        st.write("Revolutionizing Your workout experience using AI ")
 
     # About us section
     with st.container():
@@ -72,9 +72,7 @@ if selected_page == "main":
             st.header("")
             st.write(
                 """
-                - We are thrilled to have you here on our platform dedicated to empowering and inspiring individuals on their journey towards a healthier and fitter lifestyle. Whether you're a seasoned fitness enthusiast or just starting your fitness journey, we have everything you need to reach your goals and achieve the best version of yourself.
-
-                - What sets us apart is the fact that we provide personalized assistance at the comfort of your home or any place of your choice at a price that is both convenient and much cheaper than traditional gyms.
+                FitIQ is a groundbreaking project aimed at revolutionizing the fitness industry by integrating cutting-edge AI technologies into a comprehensive fitness assistant. It serves as a holistic solution catering to individuals of all fitness levels, offering personalized guidance, workout analysis, dietary plans, form correction, and progress tracking
 
                 Let your fitness journey start here!
                 Join us today and embark on a transformative experience that will enhance your physical and mental well-being. Let's build strength, resilience, and a healthier future together!
@@ -152,9 +150,7 @@ elif selected_page == "Tutorials":
     # Lottie Files: https://lottiefiles.com/
 
     html = """
-       <div style="background-color:#025246 ;padding:10px">
-       <h2 style="color:white;text-align:center;">Tutorial</h2>
-       </div>"""
+       """
     st.markdown(html, unsafe_allow_html=True)
 
     # New
@@ -387,29 +383,22 @@ elif selected_page == "Train":
                 self.p1 = p1
                 self.p2 = p2
                 self.p3 = p3
-
                 self.drawPoints = drawPoints
 
-            #    finding angles
-
+            # finding angles
             def angle(self):
                 if len(self.lmlist) != 0:
-                    point1 = self.lmlist[self.p1]
-                    point2 = self.lmlist[self.p2]
-                    point3 = self.lmlist[self.p3]
-
-                    x1, y1 = point1[1:-1]
-                    x2, y2 = point2[1:-1]
-                    x3, y3 = point3[1:-1]
+                    x1, y1 = self.lmlist[self.p1]
+                    x2, y2 = self.lmlist[self.p2]
+                    x3, y3 = self.lmlist[self.p3]
 
                     # calculating angle for left arm
-                    leftHandAngle = math.degrees(math.atan2(y3 - y2, x3 - x2) -
-                                                 math.atan2(y1 - y2, x1 - x2))
+                    leftHandAngle = math.degrees(math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2))
 
                     leftHandAngle = int(np.interp(leftHandAngle, [42, 143], [100, 0]))
 
                     # drawing circles and lines on selected points
-                    if self.drawPoints == True:
+                    if self.drawPoints:
                         cv2.circle(img, (x1, y1), 10, (0, 255, 255), 5)
                         cv2.circle(img, (x1, y1), 15, (0, 255, 0), 6)
                         cv2.circle(img, (x2, y2), 10, (0, 255, 255), 5)
@@ -422,6 +411,8 @@ elif selected_page == "Train":
 
                     return leftHandAngle
 
+
+        # Rest of your code...
 
         if 'type' not in st.session_state:
             st.session_state.type = None
@@ -1238,8 +1229,8 @@ elif selected_page == "Train":
             # Display the chart using Streamlit
             st.plotly_chart(fig)
 
-elif selected_page == "Chatbot":
-    st.title("Chatbot")
+elif selected_page == "FIT-BOT":
+    st.title("FIT-BOT")
     import openai
     import toml
     import streamlit as st
@@ -1255,7 +1246,7 @@ elif selected_page == "Chatbot":
         text.markdown(str("\n".join(messages_str)), unsafe_allow_html=True)
 
 
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     BASE_PROMPT = [{"role": "system", 'content': """
     You are Donnie, an automated Gym assistant to provide workout routines for the users and give suggestions. \
@@ -1276,7 +1267,7 @@ elif selected_page == "Chatbot":
     if "messages" not in st.session_state:
         st.session_state["messages"] = BASE_PROMPT
 
-    st.header("FIT-BOT")
+
 
     text = st.empty()
     show_messages(text)
@@ -1290,7 +1281,7 @@ elif selected_page == "Chatbot":
         st.session_state.widget = ''
 
 
-    st.text_input('Enter message here ', key='widget', on_change=submit)
+    st.text_input('Message FIT-BOT.... ', key='widget', on_change=submit)
     # st.write(a)
     if st.session_state.something != '':
         with st.spinner("Generating response..."):
@@ -1314,7 +1305,7 @@ elif selected_page == "Chatbot":
 
 
 elif selected_page == "Nutrition":
-    st.title("Nutrition")
+
     import streamlit as st
     import pandas as pd
     import numpy as np
@@ -1364,14 +1355,14 @@ elif selected_page == "Nutrition":
     except:
         st.write("")
 
-elif selected_page == "diet":
-    st.title("fitness plan")
+elif selected_page == "FitGenie":
+
 
     import openai
     import streamlit as st
 
     # Set your OpenAI GPT-3 API key
-    openai.api_key = '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'
+    openai.api_key = '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'
 
 
     # Function to generate workout and diet plans using GPT-3
